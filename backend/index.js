@@ -2,6 +2,7 @@ import cors from "cors";
 import bodyParser from "body-parser";
 import express from "express";
 import Logger from "./src/utils/logger/Logger.js";
+import router from "./src/routes/index.js";
 
 // setup
 const app = express();
@@ -13,9 +14,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // routes
-app.get("/", (req, res) => {
-  res.send("Hello world");
-});
+app.use("/api", router);
 
 app.listen(PORT, () => {
   Logger.info(`Server running on port ${PORT}`);
