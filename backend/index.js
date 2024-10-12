@@ -3,8 +3,8 @@ import bodyParser from "body-parser";
 import express from "express";
 import Logger from "./src/utils/logger/Logger.js";
 
+// setup
 const app = express();
-
 const PORT = 4000;
 
 // middlewares
