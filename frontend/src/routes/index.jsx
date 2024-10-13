@@ -5,6 +5,7 @@ import LoginPage from "../views/Auth/Login";
 import RegisterPage from "../views/Auth/Register";
 import Belajar from "../components/Belajar";
 import HomePage from "../views/home";
+import DashobardAdmin from "../views/Admin/Dashboard";
 
 const AppRoutes = () => {
   const { isAuthenticated } = useContext(AuthContext);
@@ -27,6 +28,16 @@ const AppRoutes = () => {
         path="/login"
         element={
           isAuthenticated ? <Navigate to={"/admin/dashboard"} /> : <LoginPage />
+        }
+      />
+      <Route
+        path="/admin/dashboard"
+        element={
+          isAuthenticated ? (
+            <DashobardAdmin />
+          ) : (
+            <Navigate to={"/login"} replace />
+          )
         }
       />
     </Routes>
