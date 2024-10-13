@@ -6,6 +6,10 @@ import RegisterPage from "../views/Auth/Register";
 import Belajar from "../components/Belajar";
 import HomePage from "../views/home";
 import DashobardAdmin from "../views/Admin/Dashboard";
+import UsersPage from "../views/Admin/Users";
+import CreateUser from "../views/Admin/Users/create";
+import UsersEdit from "../views/Admin/Users/edit";
+import NotFound from "../components/NotFound";
 
 const AppRoutes = () => {
   const { isAuthenticated } = useContext(AuthContext);
@@ -40,6 +44,25 @@ const AppRoutes = () => {
           )
         }
       />
+      <Route
+        path="/admin/users"
+        element={
+          isAuthenticated ? <UsersPage /> : <Navigate to={"/login"} replace />
+        }
+      />
+      <Route
+        path="/admin/create"
+        element={
+          isAuthenticated ? <CreateUser /> : <Navigate to={"/login"} replace />
+        }
+      />
+      <Route
+        path="/admin/edit/:id"
+        element={
+          isAuthenticated ? <UsersEdit /> : <Navigate to={"/login"} replace />
+        }
+      />
+      <Route path="/*" element={<NotFound />} />
     </Routes>
   );
 };
